@@ -155,7 +155,7 @@ removeCommas("30,000,000") // 30000000
 ### Convert Persian numbers to Arabic or English numbers and vice versa
 
 ```javascript
-import { digitsArToFa, digitsArToEn, digitsEnToFa, digitsFaToEn , digitsEnToAr } from "@persian-tools/persian-tools";
+import { digitsArToFa, digitsArToEn, digitsEnToFa, digitsFaToEn , digitsEnToAr, digitsFaToAr } from "@persian-tools/persian-tools";
 
 digitsArToFa("۸۹123۴۵"); // "۸۹123۴۵"
 
@@ -164,6 +164,8 @@ digitsArToEn("٨٩123٤٥"); // "8912345"
 digitsEnToFa("123۴۵۶"); // "۱۲۳۴۵۶"
 
 digitsEnToAr("123٤٥٦"); // "۱۲۳٤٥٦"
+
+digitsFaToAr("۱۷۸۲۳۴۰۵۶۹") // ١٧٨٢٣٤٠٥٦٩
 ```
 
 ### Validate Iranian national number(code-e Melli)
@@ -269,17 +271,17 @@ new Bill({ barcode: "22343223446130001070189" }).findByBarcode(); // { billId: 2
 
 - Check validation
 ```javascript
-import { Sheba } from "@persian-tools/persian-tools";
+import { isShebaValid } from "@persian-tools/persian-tools";
 
-new Sheba("IR820540102680020817909002").validate(); // true
-new Sheba("IR01234567890123456789").validate() // false
+isShebaValid("IR820540102680020817909002"); // true
+isShebaValid("IR01234567890123456789"); // false
 ```
 
 - Recognize bank information
 ```javascript
-import { Sheba } from "@persian-tools/persian-tools";
+import { getShebaInfo } from "@persian-tools/persian-tools";
 
-new Sheba("IR820540102680020817909002").recognize();
+getShebaInfo("IR820540102680020817909002");
 /*
  Result: {
     "nickname": "parsian",
